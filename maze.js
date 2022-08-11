@@ -44,7 +44,7 @@ function drawMaze(mazeFile, startingX, startingY) {
     x = startingX;
     y = startingY;
 
-    var imgFace = document.getElementById("face");
+    let imgFace = document.getElementById("face");
     context.drawImage(imgFace, x, y);
     context.stroke();
 
