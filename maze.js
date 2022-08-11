@@ -1,6 +1,6 @@
 // Определяем глобальные переменные для холста и контекста 
-var canvas;
-var context;
+let canvas;
+let context;
 
 window.onload = function() {
   // Подготавливаем холст
@@ -15,11 +15,11 @@ window.onload = function() {
 };
 
 // Отслеживаем текущую позицию значка
-var x = 0;
-var y = 0;
+let x = 0;
+let y = 0;
 
 // Таймер, включающий и отключающий новый лабиринт в любое время
-var timer;
+let timer;
 
 function drawMaze(mazeFile, startingX, startingY) {
   // Остановить таймер (если запущен)
@@ -30,7 +30,7 @@ function drawMaze(mazeFile, startingX, startingY) {
   dy = 0;
 
   // Загружаем изображение лабиринта
-  var imgMaze = new Image();
+  let imgMaze = new Image();
   imgMaze.onload = function() {
     // Изменяем размер холста в соответствии 
 	// с размером изображения лабиринта
@@ -55,8 +55,8 @@ function drawMaze(mazeFile, startingX, startingY) {
 }
 
 // Скорость перемещения значка
-var dx = 0;
-var dy = 0;
+let dx = 0;
+let dy = 0;
 
 function processKey(e) {
   // Если значок находится в движении, останавливаем его
@@ -123,15 +123,15 @@ function drawFrame() {
 }
 function checkForCollision() {
   // Перебираем все пикселы и инвертируем их цвет
-  var imgData = context.getImageData(x-1, y-1, 15+2, 15+2);
-  var pixels = imgData.data;
+  let imgData = context.getImageData(x-1, y-1, 15+2, 15+2);
+  let pixels = imgData.data;
 
   // Получаем данные для одного пиксела
   for (var i = 0; n = pixels.length, i < n; i += 4) {
-    var red = pixels[i];
-    var green = pixels[i+1];
-    var blue = pixels[i+2];
-    var alpha = pixels[i+3];
+    let red = pixels[i];
+    let green = pixels[i+1];
+    let blue = pixels[i+2];
+    let alpha = pixels[i+3];
 
     // Смотрим на наличие черного цвета стены, что указывает на столкновение
     if (red == 0 && green == 0 && blue == 0) {
@@ -152,4 +152,7 @@ function loadEasy() {
 
 function loadHard() {
   drawMaze('maze.png', 268, 5);
+}
+function loadAvarage(){
+  drawMaze('avarage_maze.png', 190, 1);
 }
